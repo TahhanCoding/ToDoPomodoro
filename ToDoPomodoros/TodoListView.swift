@@ -17,7 +17,8 @@ struct TodoListView: View {
     @State var newTodoPomodoros = 1
     @State var totalPomodoros = 0
     @State private var showPomodoroView = false
-    @State var passedValue = 0
+    @State private var PomodorosRemaining = 0
+    
 
     
     //MARK: Main View
@@ -47,18 +48,19 @@ struct TodoListView: View {
             List {
                 ForEach($todoItems) { $todoItem in
                     HStack {
-                        Button(action: {
-                            self.showPomodoroView = true
-                        }) {
-                            Text(todoItem.title)
-                                .foregroundColor(todoItem.completed ?
-                                    .green : .gray)
-                        }
-                        .sheet(isPresented: $showPomodoroView, onDismiss: {
-                                    self.passedValue = todoItem.pomodoros
+                       Button(action: {
+                                    self.showPomodoroView = true
                                 }) {
-                                    PomodoroView(PomodorosRemaining: self.$passedValue)
+                                    Text(todoItem.title)
+                                        .foregroundColor(todoItem.completed ?
+                                            .green : .gray)
                                 }
+                                .sheet(isPresented: $showPomodoroView) {
+                                    // when sheet is dismissed, showPomodoroView is set to false
+                                    PomodoroView(PomodorosRemaining: self.$PomodorosRemaining)
+                                }
+                        
+                        
                         Spacer()
                         Text("\(todoItem.pomodoros) pomodoros")
 

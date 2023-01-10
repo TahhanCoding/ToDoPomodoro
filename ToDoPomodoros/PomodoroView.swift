@@ -21,7 +21,6 @@ struct PomodoroView: View {
 // let tikSound = URL(fileURLWithPath: Bundle.main.path(forResource: "tik", ofType: "wav")!)
 
     var body: some View {
-        self.$PomodorosRemaining = TodoListView.$pas
         VStack {
             ZStack {
                 Circle()
@@ -64,8 +63,10 @@ struct PomodoroView: View {
                     self.progress = CGFloat(self.timeRemaining) / CGFloat(25 * 60)
                   //self.playSound()
                 } else {
-                    self.timeRemaining = 25 * 60
                     self.isRunning = false
+                    self.timeRemaining = 25 * 60
+                    self.PomodorosRemaining -= 1
+                    
                     
                 }
             }
