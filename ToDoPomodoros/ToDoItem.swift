@@ -14,7 +14,7 @@ struct TodoItem: Identifiable {
     var completed: Bool
 }
 
-
+//TODO: Get some advice strings from API
 struct Advice {
     let advice: String
 }
