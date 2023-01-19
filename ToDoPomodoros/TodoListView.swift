@@ -15,9 +15,10 @@ struct TodoListView: View {
     @State var todoItems: [TodoItem] = []
     @State var newTodoTitle = ""
     @State var newTodoPomodoros = 1
+    
     @State var totalPomodoros = 0
     @State private var showPomodoroView = false
-    @State private var PomodorosRemaining = 0
+//    @State private var PomodorosRemaining = 0
     
 
     
@@ -57,7 +58,7 @@ struct TodoListView: View {
                                 }
                                 .sheet(isPresented: $showPomodoroView) {
                                     // when sheet is dismissed, showPomodoroView is set to false
-                                    PomodoroView(PomodorosRemaining: self.$PomodorosRemaining)
+                                    PomodoroView()
                                 }
                         
                         

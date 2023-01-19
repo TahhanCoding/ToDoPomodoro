@@ -9,10 +9,10 @@ import SwiftUI
 //import AVFoundation
 
 struct PomodoroView: View {
-    @Binding var PomodorosRemaining: Int
-    @State private var timeRemaining = 10
+//    @Binding var PomodorosRemaining: Int
+    @State private var timeRemaining = 1500
     @State private var isRunning = false
-    @State private var progress: CGFloat = 0
+    @State private var progress: CGFloat = CGFloat(1500) / CGFloat(25 * 60)
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Environment(\.presentationMode) var presentationMode
 
@@ -34,7 +34,11 @@ struct PomodoroView: View {
             //
             Spacer()
             //
-            VStack {
+            HStack {
+                //
+                Spacer()
+                //
+
                 HStack {
                     Button(action: {
                         self.isRunning.toggle()
@@ -42,15 +46,22 @@ struct PomodoroView: View {
                         Text(isRunning ? "Pause" : "Start")
                     }
                 }
+                //
+                Spacer()
+                //
                 HStack {
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Back")
                     }
-                    Text("PomodorosRemaining: \(PomodorosRemaining)")
+//                    Text("PomodorosRemaining: \(PomodorosRemaining)")
                         
                 }
+                //
+                Spacer()
+                //
+
             }
             //
             Spacer()
@@ -65,7 +76,7 @@ struct PomodoroView: View {
                 } else {
                     self.isRunning = false
                     self.timeRemaining = 25 * 60
-                    self.PomodorosRemaining -= 1
+//                    self.PomodorosRemaining -= 1
                     
                     
                 }
