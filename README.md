@@ -5,5 +5,5 @@ A todoList iOS Application that keeps track of number of pomodoros sessions requ
 toAdd Features : 
 # ability to add new tasks to a list - Done
 # every task have its own number of pomodoros - Done
-##### show pomodoros remaining of each task and its total pomodoros in main view and task view as remaining/Total format
-##### show an advice with proper font underneath the pomodoro circle
+##### Track number of worked/total pomodors for all tasks and for each task.
+##### show an advice with proper font underneath the pomodoro circle.
