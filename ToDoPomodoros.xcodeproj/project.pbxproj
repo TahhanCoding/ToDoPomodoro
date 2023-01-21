@@ -11,7 +11,9 @@
 		322AC8E5296222AB0040DBC3 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AC8E4296222AB0040DBC3 /* TodoListView.swift */; };
 		322AC8E7296222B10040DBC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322AC8E6296222B10040DBC3 /* Assets.xcassets */; };
 		322AC8EA296222B10040DBC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322AC8E9296222B10040DBC3 /* Preview Assets.xcassets */; };
-		32B061EA296A224B0083357C /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B061E9296A224B0083357C /* ToDoItem.swift */; };
+		32A43967297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A43965297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld */; };
+		32A43969297C46BE00A6ACB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A43968297C46BE00A6ACB2 /* CoreDataManager.swift */; };
+		32B061EA296A224B0083357C /* Advice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B061E9296A224B0083357C /* Advice.swift */; };
 		32B061EC296A25C50083357C /* PomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B061EB296A25C50083357C /* PomodoroView.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +23,9 @@
 		322AC8E4296222AB0040DBC3 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		322AC8E6296222B10040DBC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		322AC8E9296222B10040DBC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		32B061E9296A224B0083357C /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		32A43966297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoPomodorosModel.xcdatamodel; sourceTree = "<group>"; };
+		32A43968297C46BE00A6ACB2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		32B061E9296A224B0083357C /* Advice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advice.swift; sourceTree = "<group>"; };
 		32B061EB296A25C50083357C /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,9 +62,11 @@
 				322AC8E2296222AB0040DBC3 /* ToDoPomodorosApp.swift */,
 				322AC8E4296222AB0040DBC3 /* TodoListView.swift */,
 				32B061EB296A25C50083357C /* PomodoroView.swift */,
-				32B061E9296A224B0083357C /* ToDoItem.swift */,
-				322AC8E6296222B10040DBC3 /* Assets.xcassets */,
+				32B061E9296A224B0083357C /* Advice.swift */,
+				32A43968297C46BE00A6ACB2 /* CoreDataManager.swift */,
+				32A43965297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld */,
 				322AC8E8296222B10040DBC3 /* Preview Content */,
+				322AC8E6296222B10040DBC3 /* Assets.xcassets */,
 			);
 			path = ToDoPomodoros;
 			sourceTree = "<group>";
@@ -143,10 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A43969297C46BE00A6ACB2 /* CoreDataManager.swift in Sources */,
+				32A43967297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld in Sources */,
 				322AC8E5296222AB0040DBC3 /* TodoListView.swift in Sources */,
 				32B061EC296A25C50083357C /* PomodoroView.swift in Sources */,
 				322AC8E3296222AB0040DBC3 /* ToDoPomodorosApp.swift in Sources */,
-				32B061EA296A224B0083357C /* ToDoItem.swift in Sources */,
+				32B061EA296A224B0083357C /* Advice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +355,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		32A43965297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				32A43966297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodel */,
+			);
+			currentVersion = 32A43966297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodel */;
+			path = ToDoPomodorosModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 322AC8D7296222AB0040DBC3 /* Project object */;
 }

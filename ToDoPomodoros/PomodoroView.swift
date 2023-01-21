@@ -6,19 +6,22 @@
 //
 
 import SwiftUI
-//import AVFoundation
 
 struct PomodoroView: View {
-//    @Binding var PomodorosRemaining: Int
-    @State private var timeRemaining = 1500
-    @State private var isRunning = false
-    @State private var progress: CGFloat = CGFloat(1500) / CGFloat(25 * 60)
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @Environment(\.presentationMode) var presentationMode
+    //MARK: Properties
+    let toDoItem: ToDoItem
+    let coreDM: CoreDataManager
+
+    @State private var title = ""
+    @State private var pomodoros = 0
+    @State private var completed = false
 
     
-// @State var audioPlayer = AVAudioPlayer()
-// let tikSound = URL(fileURLWithPath: Bundle.main.path(forResource: "tik", ofType: "wav")!)
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var progress: CGFloat = CGFloat(25 * 60) / CGFloat(25 * 60)
+    @State private var timeRemaining = 1500
+    @State private var isRunning = false
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -55,8 +58,6 @@ struct PomodoroView: View {
                     }) {
                         Text("Back")
                     }
-//                    Text("PomodorosRemaining: \(PomodorosRemaining)")
-                        
                 }
                 //
                 Spacer()
@@ -72,33 +73,19 @@ struct PomodoroView: View {
                 if self.timeRemaining > 0 {
                     self.timeRemaining -= 1
                     self.progress = CGFloat(self.timeRemaining) / CGFloat(25 * 60)
-                  //self.playSound()
                 } else {
+                    // reset timer
                     self.isRunning = false
                     self.timeRemaining = 25 * 60
-//                    self.PomodorosRemaining -= 1
-                    
-                    
                 }
             }
         }
     }
-    
-//     func playSound() {
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: tikSound)
-//            audioPlayer.prepareToPlay()
-//            audioPlayer.play()
-//        } catch {
-//            print(error)
-//        }
-//    }
-    
 }
 
 //
 //struct PomodoroView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        PomodoroView(PomodorosRemaining: TodoLis)
+//        PomodoroView()
 //    }
 //}

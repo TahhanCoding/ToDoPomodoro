@@ -12,69 +12,74 @@ import SwiftUI
 struct TodoListView: View {
     
     //MARK: Properties
-    @State var todoItems: [TodoItem] = []
-    @State var newTodoTitle = ""
-    @State var newTodoPomodoros = 1
     
-    @State var totalPomodoros = 0
-    @State private var showPomodoroView = false
-//    @State private var PomodorosRemaining = 0
     
+    let coreDM: CoreDataManager
+    @State private var toDoItems: [ToDoItem] = [ToDoItem]()
+    
+    @State private var title: String = ""
+    @State var pomodoros: Int16 = 1
+    @State private var completed: Bool = false
 
+    @State var totalPomodoros: Int16 = 0
+    @State private var showPomodoroView = false
     
     //MARK: Main View
     var body: some View {
         VStack {
             HStack {
-                TextField("Task title", text: $newTodoTitle)
-                Stepper(value: $newTodoPomodoros, in: 1...10) {
+                TextField("Task title", text: $title)
+                Stepper(value: $pomodoros, in: 1...10) {
                     VStack {
-                        Text("\(newTodoPomodoros)")
+                        Text("\(pomodoros)")
                         Image(systemName: "digitalcrown.horizontal.arrow.counterclockwise.fill")
                             .foregroundColor(.red)
                     }
                 }
                 Button(action: {
-                    let todoItem = TodoItem(title: newTodoTitle, pomodoros: newTodoPomodoros, completed: false)
-                    todoItems.append(todoItem)
-                    newTodoTitle = ""
-                    totalPomodoros += newTodoPomodoros
-                    newTodoPomodoros = 1
+                    coreDM.save(title: title, pomodoros: pomodoros, Completed: completed)
+                    toDoItems = coreDM.loadData()
+                    totalPomodoros += pomodoros
+                    title = ""
+                    pomodoros = 1
                 }) {
                     Text("Add")
                 }
             }
             .padding()
-            
             List {
-                ForEach($todoItems) { $todoItem in
+                ForEach($toDoItems, id: \.self) { $toDoItem in
                     HStack {
-                       Button(action: {
-                                    self.showPomodoroView = true
-                                }) {
-                                    Text(todoItem.title)
-                                        .foregroundColor(todoItem.completed ?
-                                            .green : .gray)
-                                }
-                                .sheet(isPresented: $showPomodoroView) {
-                                    // when sheet is dismissed, showPomodoroView is set to false
-                                    PomodoroView()
-                                }
-                        
-                        
+                        Button(action: {
+                            self.showPomodoroView = true
+                        }) {
+                            Text(toDoItem.title ?? "").foregroundColor(toDoItem.completed ? .green : .gray)
+                        }
+                        .sheet(isPresented: $showPomodoroView) {
+                            // when sheet is dismissed, showPomodoroView is set to false
+                            PomodoroView(toDoItem: toDoItem, coreDM: coreDM)
+                        }
                         Spacer()
-                        Text("\(todoItem.pomodoros) pomodoros")
-
+                        Text("\(toDoItem.pomodoros) pomodoros")
                     }
-                }
+                }.onDelete(perform: { indexSet in
+                    indexSet.forEach { index in
+                        let toDoItem = toDoItems[index]
+                        coreDM.delete(toDoItem: toDoItem)
+                        toDoItems = coreDM.loadData()
+                    }
+                })
+                .padding()
             }
-            .padding()
         }
+        .onAppear(perform: {
+            toDoItems = coreDM.loadData()
+        })
     }
 }
 
 
-//
+
 //struct TodoListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        TodoListView()
