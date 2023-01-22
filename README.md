@@ -11,7 +11,7 @@
 #### show an advice with proper font underneath the pomodoro circle.
 
 ## Main
-![alt text](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/1.png)
+<img src="[https://github.com/favicon.ico](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/1.png)" width="100">
 
 ## Delete a Task
 ![alt text](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/2.png)
