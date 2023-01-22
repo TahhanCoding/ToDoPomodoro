@@ -9,3 +9,12 @@
 
 #### Track number of worked/total pomodors for all tasks and for each task.
 #### show an advice with proper font underneath the pomodoro circle.
+
+## Main
+![alt text](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/1.png)
+
+## Delete a Task
+![alt text](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/2.png)
+
+## PomodoroView
+![alt text](https://github.com/TahhanCoding/ToDoPomodoro/blob/main/ScreenShots/3.png)
