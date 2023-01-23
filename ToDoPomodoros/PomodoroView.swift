@@ -12,10 +12,11 @@ struct PomodoroView: View {
     let toDoItem: ToDoItem
     let coreDM: CoreDataManager
 
-    @State private var title = ""
-    @State private var pomodoros = 0
-    @State private var completed = false
-
+    //TODO: Add a subtitle currentPomodoro/TotalTaskPomodoros e.g. 2/3 or 2 of 3
+    // this requires to add another attribute in the core data model.
+    // and a method to update current Pomodoro when a pomodoro is finished.
+    // After A Task Total Pomodoros = Current Pomodoro and It finishes, Task is highlighted as finished.
+    //    @State private var currentPomodoros: Int16 = 1
     
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var progress: CGFloat = CGFloat(25 * 60) / CGFloat(25 * 60)
@@ -25,6 +26,12 @@ struct PomodoroView: View {
 
     var body: some View {
         VStack {
+            //
+            Spacer()
+            //
+            Text(toDoItem.title ?? "")
+            Text("\(toDoItem.pomodoros)")
+            //
             ZStack {
                 Circle()
                     .trim(from: 0, to: progress)
@@ -41,7 +48,6 @@ struct PomodoroView: View {
                 //
                 Spacer()
                 //
-
                 HStack {
                     Button(action: {
                         self.isRunning.toggle()
@@ -62,12 +68,14 @@ struct PomodoroView: View {
                 //
                 Spacer()
                 //
-
             }
             //
             Spacer()
             //
         }
+//        .onAppear(perform: {
+//            currentPomodoros = toDoItem.pomodoros
+//        })
         .onReceive(timer) { _ in
             if self.isRunning {
                 if self.timeRemaining > 0 {
