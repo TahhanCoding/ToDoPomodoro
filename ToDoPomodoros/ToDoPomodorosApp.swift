@@ -11,7 +11,7 @@ import SwiftUI
 struct ToDoPomodorosApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoListView(coreDM: CoreDataManager())
+            TodoListView(coreDM: CoreDataManager(),toDoItem: ToDoItem())
         }
     }
 }

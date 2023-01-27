@@ -9,8 +9,11 @@ import SwiftUI
 
 struct PomodoroView: View {
     //MARK: Properties
-    let toDoItem: ToDoItem
     let coreDM: CoreDataManager
+    @Binding var toDoItem: ToDoItem
+
+    @State var advice: String = ""
+    let viewModel: ViewModel = ViewModel()
 
     //TODO: Add a subtitle currentPomodoro/TotalTaskPomodoros e.g. 2/3 or 2 of 3
     // this requires to add another attribute in the core data model.
@@ -22,15 +25,20 @@ struct PomodoroView: View {
     @State private var progress: CGFloat = CGFloat(25 * 60) / CGFloat(25 * 60)
     @State private var timeRemaining = 1500
     @State private var isRunning = false
+    
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         VStack {
             //
             Spacer()
             //
             Text(toDoItem.title ?? "")
-            Text("\(toDoItem.pomodoros)")
+            Text("\(advice)")
+                .padding()
+                .italic(true)
+                .fontWidth(.expanded)
+                .foregroundColor(.orange)
             //
             ZStack {
                 Circle()
@@ -50,6 +58,7 @@ struct PomodoroView: View {
                 //
                 HStack {
                     Button(action: {
+                        self.advice = viewModel.advice
                         self.isRunning.toggle()
                     }) {
                         Text(isRunning ? "Pause" : "Start")
@@ -73,9 +82,10 @@ struct PomodoroView: View {
             Spacer()
             //
         }
-//        .onAppear(perform: {
+        .onAppear(perform: {
 //            currentPomodoros = toDoItem.pomodoros
-//        })
+            viewModel.loadData()
+        })
         .onReceive(timer) { _ in
             if self.isRunning {
                 if self.timeRemaining > 0 {

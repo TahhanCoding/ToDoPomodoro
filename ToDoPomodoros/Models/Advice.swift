@@ -6,11 +6,11 @@
 //
 import Foundation
 
-//TODO: Get some advice strings from API
-struct Advice {
-    let advice: String
-    
-    
-    
-    
+struct Result: Codable {
+    let slip: Advice
 }
+struct Advice: Codable {
+    let id: Int
+    let advice: String
+}
+

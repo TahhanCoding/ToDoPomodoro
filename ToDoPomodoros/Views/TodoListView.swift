@@ -7,20 +7,15 @@
 
 import SwiftUI
 
-
-
 struct TodoListView: View {
     
     //MARK: Properties
-    
-    
     let coreDM: CoreDataManager
+    @State var toDoItem: ToDoItem
     @State private var toDoItems: [ToDoItem] = [ToDoItem]()
-    
     @State private var title: String = ""
     @State var pomodoros: Int16 = 1
     @State private var completed: Bool = false
-
     @State var totalPomodoros: Int16 = 0
     @State private var showPomodoroView = false
     
@@ -52,15 +47,16 @@ struct TodoListView: View {
                     HStack {
                         Button(action: {
                             self.showPomodoroView = true
+                            self.toDoItem = toDoItem
                         }) {
                             Text(toDoItem.title ?? "").foregroundColor(toDoItem.completed ? .green : .gray)
                         }
-                        .sheet(isPresented: $showPomodoroView) {
-                            // when sheet is dismissed, showPomodoroView is set to false
-                            PomodoroView(toDoItem: toDoItem, coreDM: coreDM)
-                        }
                         Spacer()
-                        Text("\(toDoItem.pomodoros) pomodoros")
+                        Text("\(toDoItem.pomodoros)")
+                        Image(systemName: "digitalcrown.horizontal.arrow.counterclockwise.fill")
+                            .foregroundColor(.red)
+                    }.sheet(isPresented: $showPomodoroView) {
+                        PomodoroView(coreDM: coreDM, toDoItem: self.$toDoItem)
                     }
                 }.onDelete(perform: { indexSet in
                     indexSet.forEach { index in
