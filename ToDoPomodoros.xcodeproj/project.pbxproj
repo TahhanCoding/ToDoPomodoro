@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3212989C2981BA250022CF4E /* AdviceLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212989B2981BA250022CF4E /* AdviceLoad.swift */; };
 		322AC8E3296222AB0040DBC3 /* ToDoPomodorosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AC8E2296222AB0040DBC3 /* ToDoPomodorosApp.swift */; };
 		322AC8E5296222AB0040DBC3 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322AC8E4296222AB0040DBC3 /* TodoListView.swift */; };
 		322AC8E7296222B10040DBC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322AC8E6296222B10040DBC3 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3212989B2981BA250022CF4E /* AdviceLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceLoad.swift; sourceTree = "<group>"; };
 		322AC8DF296222AB0040DBC3 /* ToDoPomodoros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPomodoros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		322AC8E2296222AB0040DBC3 /* ToDoPomodorosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPomodorosApp.swift; sourceTree = "<group>"; };
 		322AC8E4296222AB0040DBC3 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3212989D2981D88C0022CF4E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3212989B2981BA250022CF4E /* AdviceLoad.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3212989E2981D8AD0022CF4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32B061E9296A224B0083357C /* Advice.swift */,
+				32A43968297C46BE00A6ACB2 /* CoreDataManager.swift */,
+				32A43965297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3212989F2981D8C70022CF4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				322AC8E4296222AB0040DBC3 /* TodoListView.swift */,
+				32B061EB296A25C50083357C /* PomodoroView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		322AC8D6296222AB0040DBC3 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				322AC8E2296222AB0040DBC3 /* ToDoPomodorosApp.swift */,
-				322AC8E4296222AB0040DBC3 /* TodoListView.swift */,
-				32B061EB296A25C50083357C /* PomodoroView.swift */,
-				32B061E9296A224B0083357C /* Advice.swift */,
-				32A43968297C46BE00A6ACB2 /* CoreDataManager.swift */,
-				32A43965297C44FF00A6ACB2 /* ToDoPomodorosModel.xcdatamodeld */,
+				3212989F2981D8C70022CF4E /* Views */,
+				3212989E2981D8AD0022CF4E /* Models */,
+				3212989D2981D88C0022CF4E /* ViewModels */,
 				322AC8E8296222B10040DBC3 /* Preview Content */,
 				322AC8E6296222B10040DBC3 /* Assets.xcassets */,
 			);
@@ -154,6 +181,7 @@
 				322AC8E5296222AB0040DBC3 /* TodoListView.swift in Sources */,
 				32B061EC296A25C50083357C /* PomodoroView.swift in Sources */,
 				322AC8E3296222AB0040DBC3 /* ToDoPomodorosApp.swift in Sources */,
+				3212989C2981BA250022CF4E /* AdviceLoad.swift in Sources */,
 				32B061EA296A224B0083357C /* Advice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
